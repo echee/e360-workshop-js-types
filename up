@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -eu
-
-docker build . -t e360-workshop-js-types
-docker run -d --rm --name e360-workshop-js-types e360-workshop-js-types
-docker exec -it e360-workshop-js-types bash
