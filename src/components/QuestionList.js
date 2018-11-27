@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MultipleChoiceList = ({ responses, qid }) => {
-  console.log(responses, qid);
   return (
     <div className="control">
       {responses.map((response, id) => (
