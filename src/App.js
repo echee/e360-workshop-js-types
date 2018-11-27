@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import NavBar from './components/NavBar';
 import SearchForm from './components/SearchForm';
-import Results from './components/Results';
 import 'bulma/css/bulma.css';
 import './App.css';
 
@@ -11,13 +10,12 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <section class="section">
-          <div class="container">
-            <h1 class="title">Look up a movie</h1>
+        <section className="section">
+          <div className="container">
+            <h1 className="title">Ready to test your trivial knowledge?</h1>
             <SearchForm />
           </div>
         </section>
-        <Results />
       </div>
     );
   }

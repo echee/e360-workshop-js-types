@@ -1,24 +1,43 @@
-import React from 'react';
-import 'bulma/css/bulma.css';
+import React, { Component } from 'react';
+import QuestionList from './QuestionList';
 
-const SearchForm = () => {
-  return (
-    <form>
-      <div class="field">
-        <label class="label">Search Term</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="e.g Star Wars" />
+class SearchForm extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isFetching: false,
+      results: [],
+    };
+  }
+  getTrivia = () => {
+    this.setState({ isFetching: true });
+    const api = 'https://opentdb.com/api.php?amount=10';
+    fetch(api)
+      .then(resp => resp.json())
+      .then(data => {
+        this.setState({ isFetching: false, results: data.results });
+      });
+  };
+
+  render() {
+    return (
+      <>
+        <button
+          type="button"
+          disabled={this.state.isFetching}
+          className="button is-link"
+          onClick={this.getTrivia}>
+          Quiz Me!
+        </button>
+        <div>
+          {this.state.results.length > 0 && (
+            <QuestionList questions={this.state.results} />
+          )}
         </div>
-      </div>
-      <div class="field">
-        <div class="control">
-          <button type="button" class="button is-link">
-            Search
-          </button>
-        </div>
-      </div>
-    </form>
-  );
-};
+      </>
+    );
+  }
+}
 
 export default SearchForm;

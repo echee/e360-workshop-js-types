@@ -1,11 +1,13 @@
 // @flow
 import React from 'react';
-import 'bulma/css/bulma.css';
 
 const NavBar = () => {
   return (
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
+    <nav
+      className="navbar is-dark"
+      role="navigation"
+      aria-label="main navigation">
+      <div className="navbar-brand">
         {/* <a
           role="button"
           class="navbar-burger"
