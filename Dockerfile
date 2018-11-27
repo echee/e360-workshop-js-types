@@ -1,7 +1,7 @@
 FROM node:10
-RUN mkdir /workshop
 COPY ./ /workshop
-WORKDIR /workshop
+VOLUME /workshop
 EXPOSE 3000/tcp
+WORKDIR /workshop
 RUN yarn
 CMD yarn start
