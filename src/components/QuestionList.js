@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MultipleChoiceList = ({ responses, qid }) => {
+const OptionsList = ({ responses, qid }) => {
   return (
     <div className="control">
       {responses.map((response, id) => (
@@ -22,12 +22,12 @@ const QuestionList = ({ questions }) => {
           key={`question-${id}`}
           dangerouslySetInnerHTML={{ __html: question.question }}
         />
-        {question.type === 'multiple' && (
-          <MultipleChoiceList
-            qid={`question-${id}`}
-            responses={[question.correct_answer, ...question.incorrect_answers]}
-          />
-        )}
+        {/* {question.type === 'multiple' && ( */}
+        <OptionsList
+          qid={`question-${id}`}
+          responses={[question.correct_answer, ...question.incorrect_answers]}
+        />
+        {/* )} */}
       </div>
     );
   });
