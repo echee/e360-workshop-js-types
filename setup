@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -eu
+
+IMAGE_NAME="${IMAGE_NAME:=e360-workshop-js-types}"
+
+maybe_stop_container() {
+  if docker ps -a | grep -q "${IMAGE_NAME}"; then
+    echo "Stopping pre-running container ..."
+    docker stop "${IMAGE_NAME}"
+  fi
+}
+
+build_image() {
+  echo "building image ..."
+  docker build . -t e360-workshop-js-types
+}
+
+run_image() {
+  echo "running image as \"${IMAGE_NAME}\"..."
+  docker run -d -v "$(pwd)":/workshop --rm --name e360-workshop-js-types e360-workshop-js-types
+}
+
+exec_shell() {
+  echo "shelling into running container ..."
+  docker exec -it e360-workshop-js-types bash
+}
+
+if [ -z "$1" ] || [ "$1" = "all" ]; then
+  maybe_stop_container
+  build_image
+  run_image
+  exec_shell
+elif [ "$1" = "build" ]; then
+  maybe_stop_container
+  build_image
+elif [ "$1" = "run" ]; then
+  maybe_stop_container
+  run_image
+elif [ "$1" = "shell" ]; then
+  exec_shell
+fi
