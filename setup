@@ -6,7 +6,7 @@ IMAGE_NAME="${IMAGE_NAME:=e360-workshop-js-types}"
 
 maybe_stop_container() {
   if [ -n "$(docker ps -a | grep "${IMAGE_NAME}")" ]; then
-    echo "Stopping pre-running container"
+    echo "Stopping pre-running container ..."
     docker stop "${IMAGE_NAME}"
   fi
 }

@@ -1,6 +1,6 @@
 FROM node:10
 RUN mkdir /workshop
-ADD ./ /workshop
+COPY ./ /workshop
 WORKDIR /workshop
 EXPOSE 3000/tcp
 RUN yarn
