@@ -10,6 +10,7 @@
     - types help us reason about programs
     - types give us documentation
 - 'annotations'
+- type inference
 - typed vs. untyped langs
     - assembly vs. JS
 - opt-in, 'gradual' typing system
@@ -47,6 +48,9 @@
 ## TS and Flow specific bobs
 
 - interfaces
+    - can be 'extended' and 'implemented'
+    - 'extends' -> adds new stuff in a type that is now the older plus the new one
+    - 'implements' -> ensures that it upholds the described contract if a class
 - unions
 - discriminated unions
 - products (objects/records)
@@ -86,3 +90,4 @@
 ## Food for thought
 
 - https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter
+- https://medium.com/@martin_hotell/interface-vs-type-alias-in-typescript-2-7-2a8f1777af4c
