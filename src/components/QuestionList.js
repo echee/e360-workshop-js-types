@@ -1,40 +1,20 @@
 import React from 'react';
+import OptionsList from './OptionsList';
 
-const OptionsList = ({ responses, qid }) => {
-  return (
-    <div className="control">
-      {responses.map((response, aid) => (
-        <div key={aid}>
-          <input
-            type="radio"
-            name={`question-${qid}`}
-            id={`question-${qid}-answer${aid}`}
-          />{' '}
-          <label
-            className="radio"
-            htmlFor={`question-${qid}-answer${aid}`}
-            dangerouslySetInnerHTML={{ __html: response }}
-          />{' '}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-const QuestionList = ({ questions }) => {
+const QuestionList = ({ questions, handleOptionChange }) => {
   return questions.map((question, id) => {
     return (
-      <div key={`question-${id}`} className="field">
+      <div key={`question${id}`} className="field">
         <label
           className="label"
           dangerouslySetInnerHTML={{ __html: question.question }}
         />
-        {/* {question.type === 'multiple' && ( */}
         <OptionsList
-          qid={`question-${id}`}
-          responses={[question.correct_answer, ...question.incorrect_answers]}
+          qid={id}
+          rightAnswer={question.correct_answer}
+          options={[question.correct_answer, ...question.incorrect_answers]}
+          handleOptionChange={handleOptionChange}
         />
-        {/* )} */}
       </div>
     );
   });
