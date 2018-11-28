@@ -1,4 +1,4 @@
-// @flow
+// @noflow
 import React from 'react';
 
 const OptionsList = ({ options, qid, rightAnswer, handleOptionChange }) => (

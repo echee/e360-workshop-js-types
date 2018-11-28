@@ -13,13 +13,14 @@ type Result = {
   incorrect_answers: Array<string>,
 };
 
-type Answers = Array<string>;
+type AnswerOptions = 'correct' | 'incorrect';
+type Answers = Array<AnswerOptions>;
 
 type State = {
   isFetching: boolean,
-  results?: Array<Result>,
+  results: Array<Result>,
   quizStarted: boolean,
-  myAnswers?: Answers,
+  myAnswers: Answers,
 };
 
 type Props = {};
@@ -67,7 +68,7 @@ class Trivia extends Component<Props, State> {
     return correctCount;
   };
 
-  handleOptionChange = (id: Number, value: String) => {
+  handleOptionChange = (id: number, value: AnswerOptions) => {
     let newState = Object.assign({}, this.state);
     let newAnswers = newState.myAnswers;
     newAnswers[id] = value;

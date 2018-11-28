@@ -1,4 +1,4 @@
-// @flow
+// @noflow
 import React from 'react';
 import OptionsList from './OptionsList';
 
