@@ -4,7 +4,11 @@ import Trivia from './components/Trivia';
 import 'bulma/css/bulma.css';
 import './App.css';
 
-class App extends Component {
+export interface Props {
+  foo: string;
+}
+
+class App extends Component<Props> {
   render() {
     return (
       <div className="App">
