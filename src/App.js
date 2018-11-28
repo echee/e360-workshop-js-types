@@ -5,7 +5,7 @@ import Trivia from './components/Trivia';
 import 'bulma/css/bulma.css';
 import './App.css';
 
-class App extends Component<{}> {
+class App extends Component {
   render() {
     return (
       <div className="App">

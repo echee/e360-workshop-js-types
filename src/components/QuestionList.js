@@ -1,7 +1,7 @@
 import React from 'react';
 import OptionsList from './OptionsList';
 
-const QuestionList = ({ questions, handleOptionChange }) => {
+const QuestionList = ({ questions }) => {
   return questions.map((question, id) => {
     return (
       <div key={`question${id}`} className="field">
@@ -13,7 +13,6 @@ const QuestionList = ({ questions, handleOptionChange }) => {
           qid={id}
           rightAnswer={question.correct_answer}
           options={[question.correct_answer, ...question.incorrect_answers]}
-          handleOptionChange={handleOptionChange}
         />
       </div>
     );
