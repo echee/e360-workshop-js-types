@@ -4,10 +4,14 @@ const OptionsList = ({ responses, qid }) => {
   return (
     <div className="control">
       {responses.map((response, id) => (
-        <label className="radio">
-          <input type="radio" name={`question-${qid}`} />
-          {response}
-        </label>
+        <>
+          <input type="radio" name={`question-${qid}`} />{' '}
+          <label
+            className="radio"
+            for={`question-${qid}`}
+            dangerouslySetInnerHTML={{ __html: response }}
+          />{' '}
+        </>
       ))}
     </div>
   );
