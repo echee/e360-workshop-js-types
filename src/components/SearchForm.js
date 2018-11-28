@@ -15,6 +15,7 @@ class SearchForm extends Component {
       results: [],
     };
   }
+
   getTrivia = () => {
     this.setState({ isFetching: true });
     const api = 'https://opentdb.com/api.php?amount=10';

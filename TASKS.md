@@ -9,6 +9,7 @@
     - types help us catch bugs
     - types help us reason about programs
     - types give us documentation
+- 'annotations'
 - typed vs. untyped langs
     - assembly vs. JS
 - opt-in, 'gradual' typing system
@@ -31,6 +32,7 @@
     - PascalCase
     - Doesn't need 'type' or 'ty' in it (unless you are writing your own language)
 
+
 - type coercions
 
 -types in flow/typescript
@@ -42,6 +44,33 @@
         - importing generated types
         - hooking them up
 
+## TS and Flow specific bobs
+
+- interfaces
+- unions
+- discriminated unions
+- products (objects/records)
+- optional fields
+- exporting types
+- pattern matching on types
+- exhaustive pattern matches
+
+## React specific stuff
+
+- Prop types
+
+## Best practices
+
+- best to avoid generic types like 'object' and 'function' if you can help it;
+  much better to be explicit about the shape of things because then the type
+  checker can help call out more mistakes!
+
+## Gotchas
+
+- 'weak types', types that have all optional fields and therefore just be the empty object.
+
+## Our codebase
+
 ## Our Project
 
 - Add flow types to project
@@ -52,3 +81,8 @@
 ## For next time
 
 - Algebraic Data Types
+
+
+## Food for thought
+
+- https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter
