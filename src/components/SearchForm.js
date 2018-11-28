@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import QuestionList from './QuestionList';
 
+const inspect = x => {
+  console.log(x);
+  return x;
+};
+
 class SearchForm extends Component {
   constructor(props) {
     super(props);
@@ -10,11 +15,13 @@ class SearchForm extends Component {
       results: [],
     };
   }
+
   getTrivia = () => {
     this.setState({ isFetching: true });
     const api = 'https://opentdb.com/api.php?amount=10';
     fetch(api)
       .then(resp => resp.json())
+      .then(inspect)
       .then(data => {
         this.setState({ isFetching: false, results: data.results });
       });

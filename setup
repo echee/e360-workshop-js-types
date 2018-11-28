@@ -8,6 +8,8 @@ maybe_stop_container() {
   if docker ps -a | grep -q "${IMAGE_NAME}"; then
     echo "Stopping pre-running container ..."
     docker stop "${IMAGE_NAME}"
+  else
+    echo "No pre-running container found. Nothing to stop."
   fi
 }
 
@@ -18,25 +20,19 @@ build_image() {
 
 run_image() {
   echo "running image as \"${IMAGE_NAME}\"..."
-  docker run -d -v "$(pwd)":/workshop --rm --name e360-workshop-js-types e360-workshop-js-types
-}
-
-exec_shell() {
-  echo "shelling into running container ..."
-  docker exec -it e360-workshop-js-types bash
+  docker run -v "$(pwd)":/workshop -p 3000:3000 --rm --name e360-workshop-js-types e360-workshop-js-types
 }
 
 if [ -z "$1" ] || [ "$1" = "all" ]; then
   maybe_stop_container
   build_image
   run_image
-  exec_shell
 elif [ "$1" = "build" ]; then
   maybe_stop_container
   build_image
+elif [ "$1" = "stop" ]; then
+  maybe_stop_container
 elif [ "$1" = "run" ]; then
   maybe_stop_container
   run_image
-elif [ "$1" = "shell" ]; then
-  exec_shell
 fi
