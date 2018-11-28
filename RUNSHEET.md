@@ -66,13 +66,16 @@ What you will need to do now is start adding flow annotations to all the `.js` f
 
 ## Step 4
 
-@ryan probably need some help fleshing out a type driven bit.
+@ryan, probably need some help fleshing out a type driven bit.
 
 ## Step 5
 
 You will need to checkout this branch:`git checkout step-5`
 
-So I think we will have covered Flow, a fair bit, there is another type
+Moving on from Flow, we will take a look at Typescript.
+
+In the branch you've pulled, you will need to `npm install` the deps, which should will be the equivalent of:
+`npm install --save typescript @types/node @types/react @types/react-dom @types/jest`
 
 Additional Resources:
 
