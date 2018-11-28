@@ -66,7 +66,7 @@ What you will need to do now is start adding flow annotations to all the `.js` f
 
 ## Step 4
 
-@ryan, probably need some help fleshing out a type driven bit.
+Alternatively, if you want to skip checking out step-3 which has a more fleshed out application, you may write the code to complete the trivia application yourself. Just make sure you keep writing your types.
 
 ## Step 5
 
