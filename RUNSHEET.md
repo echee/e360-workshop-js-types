@@ -77,6 +77,10 @@ Moving on from Flow, we will take a look at Typescript.
 In the branch you've pulled, you will need to `npm install` the deps, which should will be the equivalent of:
 `npm install --save typescript @types/node @types/react @types/react-dom @types/jest`
 
+## Step 6
+
+Handling TS errors.
+
 Additional Resources:
 
 This is a guide I followed to add Typescript manually to a CRA:
