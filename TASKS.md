@@ -45,6 +45,8 @@
 ## Our Project
 
 - Add flow types to project
+- Outfit functionality for submitting questions and validating them
+  (2nd half, break up into pairs, have them write their own tyeps?)
 - Install TypeScript and port the types over
 
 ## For next time

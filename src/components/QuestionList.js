@@ -4,7 +4,7 @@ const OptionsList = ({ responses, qid }) => {
   return (
     <div className="control">
       {responses.map((response, id) => (
-        <label className="radio">
+        <label key={id} className="radio">
           <input type="radio" name={`question-${qid}`} />
           {response}
         </label>
@@ -16,10 +16,12 @@ const OptionsList = ({ responses, qid }) => {
 const QuestionList = ({ questions }) => {
   return questions.map((question, id) => {
     return (
-      <div className="field">
+      <div
+        key={`question-${id}`}
+        className="field"
+      >
         <label
           className="label"
-          key={`question-${id}`}
           dangerouslySetInnerHTML={{ __html: question.question }}
         />
         {/* {question.type === 'multiple' && ( */}
