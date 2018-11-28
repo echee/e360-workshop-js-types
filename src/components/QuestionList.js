@@ -3,15 +3,19 @@ import React from 'react';
 const OptionsList = ({ responses, qid }) => {
   return (
     <div className="control">
-      {responses.map((response, id) => (
-        <>
-          <input type="radio" name={`question-${qid}`} />{' '}
+      {responses.map((response, aid) => (
+        <div key={aid}>
+          <input
+            type="radio"
+            name={`question-${qid}`}
+            id={`question-${qid}-answer${aid}`}
+          />{' '}
           <label
             className="radio"
-            for={`question-${qid}`}
+            htmlFor={`question-${qid}-answer${aid}`}
             dangerouslySetInnerHTML={{ __html: response }}
           />{' '}
-        </>
+        </div>
       ))}
     </div>
   );
@@ -20,10 +24,9 @@ const OptionsList = ({ responses, qid }) => {
 const QuestionList = ({ questions }) => {
   return questions.map((question, id) => {
     return (
-      <div className="field">
+      <div key={`question-${id}`} className="field">
         <label
           className="label"
-          key={`question-${id}`}
           dangerouslySetInnerHTML={{ __html: question.question }}
         />
         {/* {question.type === 'multiple' && ( */}
