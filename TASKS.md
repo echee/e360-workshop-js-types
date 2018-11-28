@@ -70,7 +70,11 @@
 
 ## Our Project
 
-<TODO>
+A trivia app!
+
+- Model our domain with types
+- Annotate our functions and values with types
+- Switch over to TypeScript and try to suss out the differences
 
 ## For next time
 
