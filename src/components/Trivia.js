@@ -1,15 +1,36 @@
+// @flow
 import React, { Component } from 'react';
 import QuestionList from './QuestionList';
 import ScoreCard from './ScoreCard';
 import WarningCard from './WarningCard';
+
+type Result = {
+  category: string,
+  type: 'multiple' | 'boolean',
+  difficulty: 'easy' | 'medium' | 'hard',
+  question: string,
+  correct_answer: string,
+  incorrect_answers: Array<string>,
+};
+
+type Answers = Array<string>;
+
+type State = {
+  isFetching: boolean,
+  results?: Array<Result>,
+  quizStarted: boolean,
+  myAnswers?: Answers,
+};
+
+type Props = {};
 
 const inspect = x => {
   console.log(x);
   return x;
 };
 
-class Trivia extends Component {
-  constructor(props) {
+class Trivia extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -38,7 +59,7 @@ class Trivia extends Component {
       .catch(error => console.error('Error:', error));
   };
 
-  calculateScore = answers => {
+  calculateScore = (answers: Answers) => {
     let correctCount = 0;
     answers.forEach(answer => {
       correctCount = answer === 'correct' ? correctCount + 1 : correctCount;
@@ -46,7 +67,7 @@ class Trivia extends Component {
     return correctCount;
   };
 
-  handleOptionChange = (id, value) => {
+  handleOptionChange = (id: Number, value: String) => {
     let newState = Object.assign({}, this.state);
     let newAnswers = newState.myAnswers;
     newAnswers[id] = value;
