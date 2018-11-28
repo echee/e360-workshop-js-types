@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import QuestionList from './QuestionList';
-import ScoreCard from './ScoreCard';
-import WarningCard from './WarningCard';
 
 const inspect = x => {
   console.log(x);
@@ -15,8 +12,6 @@ class Trivia extends Component {
     this.state = {
       isFetching: false,
       results: [],
-      quizStarted: false,
-      myAnswers: [],
     };
   }
 
@@ -32,62 +27,22 @@ class Trivia extends Component {
         this.setState({
           isFetching: false,
           results: data.results,
-          quizStarted: true,
         });
       })
       .catch(error => console.error('Error:', error));
   };
 
-  calculateScore = answers => {
-    let correctCount = 0;
-    answers.forEach(answer => {
-      correctCount = answer === 'correct' ? correctCount + 1 : correctCount;
-    });
-    return correctCount;
-  };
-
-  handleOptionChange = (id, value) => {
-    let newState = Object.assign({}, this.state);
-    let newAnswers = newState.myAnswers;
-    newAnswers[id] = value;
-
-    this.setState({ myAnswers: newAnswers });
-  };
-
   render() {
-    const { results, myAnswers, quizStarted, isFetching } = this.state;
+    const { isFetching } = this.state;
 
     return (
-      <>
-        <button
-          type="button"
-          disabled={isFetching}
-          className="button is-primary"
-          onClick={this.getQuestions}>
-          {isFetching ? 'Fetching your questions' : "Let's get quizical!"}
-        </button>
-
-        {quizStarted && (
-          <div>
-            <div>
-              {results.length > 0 && (
-                <form>
-                  <QuestionList
-                    questions={results}
-                    myAnswers={myAnswers} // This is not needed. See if they pick it up as unused
-                    handleOptionChange={this.handleOptionChange}
-                  />
-                </form>
-              )}
-            </div>
-            {myAnswers.length === 5 ? (
-              <ScoreCard score={this.calculateScore(myAnswers)} />
-            ) : (
-              <WarningCard />
-            )}
-          </div>
-        )}
-      </>
+      <button
+        type="button"
+        disabled={isFetching}
+        className="button is-primary"
+        onClick={this.getQuestions}>
+        {isFetching ? 'Fetching your questions' : "Let's get quizical!"}
+      </button>
     );
   }
 }
