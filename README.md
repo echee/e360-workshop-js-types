@@ -14,8 +14,7 @@ To run this as a container, you can run the included script `setup`:
 
 `./setup all`
 
-which will build the docker image, run the container, and exec you into a shell
-inside of the container.
+which will build the docker image and run the container.
 
 If you want to run any specific step there is also :
 
@@ -27,6 +26,8 @@ to build a container,
 
 to run the built image, and
 
-`./setup exec`
+`./setup stop`
 
-to exec into the shell of the running container.
+to manually stop the running container.
+
+You can view the app at `localhost:3000` regardless of if you did this locally or with docker.
